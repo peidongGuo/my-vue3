@@ -1,0 +1,24 @@
+{
+  "name": "@vue/reactivity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "dist/reactivity.esm-bundler.js",
+  "buildOptions": {
+    "name": "VueReactivity",
+    "formats": [
+      "cjs",
+      "esm-bundler",
+      "global"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vue/shared": "workspace:*"
+  },
+  "keywords": [],
+  "author": "guopd",
+  "license": "ISC"
+}
