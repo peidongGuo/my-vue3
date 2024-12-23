@@ -18,25 +18,25 @@ module.exports = {
     __COMPAT__: true,
   },
   coverageDirectory: "coverage",
-  coverageReporters: ["html", "lcov", "text"],
-  collectCoverageFrom: [
-    "packages/*/src/**/*.ts",
-    "!packages/runtime-test/src/utils/**",
-    "!packages/template-explorer/**",
-    "!packages/sfc-playground/**",
-    "!packages/size-check/**",
-    "!packages/runtime-core/src/profiling.ts",
-    "!packages/runtime-core/src/customFormatter.ts",
-    // DOM transitions are tested via e2e so no coverage is collected
-    "!packages/runtime-dom/src/components/Transition*",
-    // only called in browsers
-    "!packages/vue/src/devCheck.ts",
-    // only used as a build entry
-    "!packages/vue/src/runtime.ts",
-    // mostly just entries
-    "!packages/vue-compat/**",
-  ],
-  watchPathIgnorePatterns: ["/node_modules/", "/dist/", "/.git/"],
+  // coverageReporters: ["html", "lcov", "text"],
+  // collectCoverageFrom: [
+  //   "packages/*/src/**/*.ts",
+  //   "!packages/runtime-test/src/utils/**",
+  //   "!packages/template-explorer/**",
+  //   "!packages/sfc-playground/**",
+  //   "!packages/size-check/**",
+  //   "!packages/runtime-core/src/profiling.ts",
+  //   "!packages/runtime-core/src/customFormatter.ts",
+  //   // DOM transitions are tested via e2e so no coverage is collected
+  //   "!packages/runtime-dom/src/components/Transition*",
+  //   // only called in browsers
+  //   "!packages/vue/src/devCheck.ts",
+  //   // only used as a build entry
+  //   "!packages/vue/src/runtime.ts",
+  //   // mostly just entries
+  //   "!packages/vue-compat/**",
+  // ],
+  // watchPathIgnorePatterns: ["/node_modules/", "/dist/", "/.git/"],
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
   moduleNameMapper: {
     "@vue/consolidate": "@vue/consolidate",
@@ -46,11 +46,11 @@ module.exports = {
     "vue/server-renderer": "<rootDir>/packages/server-renderer/src",
     vue: "<rootDir>/packages/vue/src",
   },
-  rootDir: __dirname,
-  testMatch: ["<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)"],
-  testPathIgnorePatterns: process.env.SKIP_E2E
-    ? // ignore example tests on netlify builds since they don't contribute
-      // to coverage and can cause netlify builds to fail
-      ["/node_modules/", "/examples/__tests__"]
-    : ["/node_modules/"],
+  // rootDir: __dirname,
+  // testMatch: ["<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)"],
+  // testPathIgnorePatterns: process.env.SKIP_E2E
+  //   ? // ignore example tests on netlify builds since they don't contribute
+  //     // to coverage and can cause netlify builds to fail
+  //     ["/node_modules/", "/examples/__tests__"]
+  //   : ["/node_modules/"],
 };

@@ -4,6 +4,7 @@ import { patchAttr } from "packages/runtime-dom/src/modules/attr";
 import { createAppAPI } from "./apiCreateApp";
 import { invokeArrayFns } from "./apiLifeCycle";
 import { createComponentInstance, setupComponent } from "./component";
+import { queueJob } from "./scheduler";
 import { createVNode, TEXT, normalizeVnode } from "./vnode";
 
 function getSequence(arr) {
@@ -123,7 +124,7 @@ export function createRender(renderOptions) {
       console.log(vnode, container);
     }
     function setupRenderEffect(instance, container) {
-      // 需要创建一个effect,在 effect中调用 render 方法，这样可以在属性数据变化时，render 重新执行
+      // 需要创建一个effect,在 effect中调用 render 方法，这样 render 执行中属性会进行收集依赖，当属性数据变化时，render 重新执行
       effect(
         function componentEffect() {
           // 每一个组件都有一个 effect ,vue3是组件级更新，数据更新会重新执行组件的 effect
@@ -164,9 +165,7 @@ export function createRender(renderOptions) {
           }
         },
         {
-          scheduler: (effect) => {
-            console.log(effect);
-          },
+          scheduler: queueJob,
         }
       );
     }

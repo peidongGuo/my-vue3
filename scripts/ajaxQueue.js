@@ -1,3 +1,9 @@
+/**
+ * 请求队列，最多同时存在 limitMax 个请求。开启后，每个请求链，上一个有返回结果后，再从队列中拿出来一个继续执行。
+ * @param {*} requestPipe
+ * @param {*} limitMax
+ * @returns
+ */
 export async function qpsLimit(requestPipe, limitMax) {
   const result = [];
   const promiseQueues = [];

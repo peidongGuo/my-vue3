@@ -1,10 +1,4 @@
-import {
-  hasChanged,
-  hasOwn,
-  isArray,
-  isInterger,
-  isObject,
-} from "@vue/shared/dist/shared.esm-bundler.js";
+import { hasChanged, hasOwn, isArray, isInterger, isObject } from "@vue/shared";
 import { track, trigger } from "./effect";
 import { TrackOpTypes, TriggerOpTypes } from "./operators";
 import { reactive, readonly } from "./reactive";

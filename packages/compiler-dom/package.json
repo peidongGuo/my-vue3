@@ -1,0 +1,20 @@
+{
+  "name": "@vue/compiler-dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "dist/compiler-dom.esm-bundler.js",
+  "buildOptions": {
+    "name": "VueCompilerDOM",
+    "formats": [
+      "global"
+    ]
+  },
+  "scripts": {
+    "dev": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "guopd",
+  "license": "ISC"
+}

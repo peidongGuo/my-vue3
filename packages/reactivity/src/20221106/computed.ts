@@ -1,14 +1,15 @@
-import { isFunction } from "@vue/shared";
-import { track, effect } from "./effect";
+import { isFunction, isObject } from "@vue/shared";
+import { setTextRange } from "typescript";
+import { effect } from "./effect";
 
 class ComputedRefImpl {
-  public _dirty = true; // 默认取值时不要用缓存
-  public _value;
-  public effect;
-  constructor(getter, public setter) {
-    this.effect = effect(getter, {
+  private _value;
+  private _effect;
+  private _dirty;
+  constructor(public getter, public setter) {
+    this._effect = effect(() => getter, {
       lazy: true,
-      scheduler: () => {
+      schduler: () => {
         if (!this._dirty) {
           this._dirty = true;
         }
@@ -18,7 +19,7 @@ class ComputedRefImpl {
 
   get value() {
     if (this._dirty) {
-      this._value = this.effect();
+      this._value = this._effect();
       this._dirty = false;
     }
     return this._value;
@@ -30,17 +31,13 @@ class ComputedRefImpl {
 }
 
 export function computed(getterOrOptions) {
-  let getter;
-  let setter;
+  let getter, setter;
   if (isFunction(getterOrOptions)) {
     getter = getterOrOptions;
-    setter = () => {
-      console.warn("");
-    };
-  } else {
+  }
+  if (isObject(getterOrOptions)) {
     getter = getterOrOptions.get;
     setter = getterOrOptions.set;
   }
-
   return new ComputedRefImpl(getter, setter);
 }

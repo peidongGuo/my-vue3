@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class MyTest {}
+
+      let my = new MyTest();
+
+      let map = new Map(); // 如果是 Map，则 key 被设置为空时，不会立马被回收；
+
+      //   let map = new WeakMap(); // 如果是 WeakMap，则 key 被设置为空时，会被立马回收；
+
+      map.set(my, 1);
+
+      my = null;
+    </script>
+  </body>
+</html>

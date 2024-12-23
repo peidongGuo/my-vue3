@@ -1,4 +1,4 @@
-import { isArray, isInterger } from "@vue/shared/dist/shared.esm-bundler.js";
+import { isArray, isInterger } from "@vue/shared";
 import { TrackOpTypes, TriggerOpTypes } from "./operators";
 
 export function effect(fn, options: any = {}) {

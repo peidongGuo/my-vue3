@@ -134,3 +134,7 @@ const addPrefix = (str) => "$" + str;
 const final = compose(addPrefix, leg, sum);
 console.log(final);
 console.log(final("1", "2"));
+
+// defineProperty 与 Proxy 的区别
+// defineProperty 要改动整个对象，给每个属性添加  getter、setter 方法，当遇到数组或嵌套对象时就特别不友好；
+// Proxy 就是对对象属性的整体代理，在代理中做相应操作。

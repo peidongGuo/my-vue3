@@ -1,6 +1,4 @@
 import { hasChanged, isArray, isObject } from "@vue/shared";
-import "@vue/shared/src/common.css";
-
 import { track, trigger } from "./effect";
 import { TrackOpTypes, TriggerOpTypes } from "./operators";
 import { reactive } from "./reactive";

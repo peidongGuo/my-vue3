@@ -1,5 +1,11 @@
 let queue = [];
+
+/**
+ *
+ * @param job setupEffect
+ */
 export function queueJob(job) {
+  // 这个地方进行的去重，将多次修改引起的 effect 进行去重，只更新一次就好！
   if (!queue.includes(job)) {
     queue.push(job);
     queueFlush();
@@ -11,6 +17,7 @@ let isFlushPending = false;
 function queueFlush() {
   if (!isFlushPending) {
     isFlushPending = true;
+    // 在同步执行代码中已经完成所有修改事件，然后再一起执行 job
     Promise.resolve().then(flushJobs);
   }
 }
